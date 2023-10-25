@@ -1,12 +1,19 @@
-import "../styles/globals.css";
-import { Web3ReactProvider } from "@web3-react/core";
-import { Web3Provider } from "@ethersproject/providers";
+import { ThemeProvider } from "next-themes";
+import Script from "next/script";
 
-const getLibrary = (provider) => new Web3Provider(provider);
+import "../styles/globals.css";
 
 const App = ({ Component, pageProps }) => (
-  <Web3ReactProvider getLibrary={getLibrary}>
-    <Component {...pageProps} />
-  </Web3ReactProvider>
+  <ThemeProvider attribute="class">
+    <div className="dark:bg-nft-dark bg-white min-h-screen">
+      <div className="pt-65">
+        <Component {...pageProps} />
+      </div>
+    </div>
+    <Script
+      src="https://kit.fontawesome.com/9555f8b288.js"
+      crossOrigin="anonymous"
+    />
+  </ThemeProvider>
 );
 export default App;
