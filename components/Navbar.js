@@ -35,7 +35,7 @@ const MenuItems = ({ isMobile, active, setActive, setIsOpen }) => {
             setActive(item);
             if (isMobile) setIsOpen(false);
           }}
-          className={`flex flex-row items-center font-poppins font-semibold text-base dark:hover:text-white hover:text-nft-dark mx-3 ${
+          className={`flex flex-row items-center font-poppins font-semibold text-base dark:hover:text-white minmd:text-2xl minlg:text-3xl hover:text-nft-dark mx-3 ${
             active === item
               ? "dark:text-white text-nft-black-1"
               : "dark:text-nft-gray-3 text-nft-gray-2"
@@ -121,7 +121,7 @@ const Navbar = () => {
               height={32}
               alt="logo"
             />
-            <p className="dark:text-white text-nft-black-1 font-semibold text-lg ml-1">
+            <p className="dark:text-white minmd:text-2xl minlg:text-3xl text-nft-black-1 font-semibold text-lg ml-1">
               SafelyHeld
             </p>
           </div>
