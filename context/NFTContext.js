@@ -7,7 +7,7 @@ import FormData from "form-data";
 import axios from "axios";
 // import { create as ipfsHttpClient } from "ipfs-http-client";
 
-import { MarketAddress, MarketAddressABI } from "./constants";
+import { MarketAddress, MarketAddressABI, rpcProvier } from "./constants";
 
 // eslint-disable-next-line operator-linebreak
 const JWT =
@@ -149,7 +149,7 @@ export const NFTProvider = ({ children }) => {
 
   const fetchNFTs = async () => {
     setIsLoadingNft(false);
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const provider = new ethers.providers.JsonRpcProvider(rpcProvier);
     const contract = fetchContract(provider);
     const data = await contract.fetchMarketItems();
     console.log(data);
