@@ -213,17 +213,17 @@ export const NFTProvider = ({ children }) => {
   const fetchMyNFTsOrListedNFTs = async (type) => {
     try {
       setIsLoadingNft(false);
-      let provider;
-      if (type === "fetchItemsListed") {
-        provider = new ethers.providers.JsonRpcProvider(rpcProvier);
-      } else {
-        const web3modal = new Web3Modal();
-        const connection = await web3modal.connect();
-        const provid = new ethers.providers.Web3Provider(connection);
-
-        provider = provid.getSigner();
-      }
-      const contract = fetchContract(provider);
+      // let provider;
+      // if (type === "fetchItemsListed") {
+      //   provider = new ethers.providers.JsonRpcProvider(rpcProvier);
+      // } else {
+      const web3modal = new Web3Modal();
+      const connection = await web3modal.connect();
+      const provider = new ethers.providers.Web3Provider(connection);
+      const signer = provider.getSigner();
+      // provider = provid.getSigner();
+      // }
+      const contract = fetchContract(signer);
       // eslint-disable-next-line operator-linebreak
       const data =
         type === "fetchItemsListed"
